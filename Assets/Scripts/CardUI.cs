@@ -17,7 +17,7 @@ public class CardUI : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEn
     CanvasGroup canvasGroup;
     bool isFreezed = false;
 
-    public bool isChoosed = false;
+    [HideInInspector] public bool isChoosed = false;
 
 
     /// <summary>

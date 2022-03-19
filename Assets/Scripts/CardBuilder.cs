@@ -6,6 +6,7 @@ public class CardBuilder : MonoBehaviour
 {
     [SerializeField] Canvas canvas;
     [SerializeField] CardUI cardPrefab;
+    [SerializeField] CardTarget targetPrefab;
     [SerializeField] float xOffset;
     [SerializeField] float yCoordinate;
     
@@ -40,6 +41,16 @@ public class CardBuilder : MonoBehaviour
             var cardObj = Instantiate(cardPrefab, canvas.transform);
             cardObj.transform.localPosition = new Vector2(startX, vertCoordinate);
             cardObj.SetValues(canvas, cards[i].CardText, cards[i].CardColor);
+        }
+    }
+
+    public void BuildTargets(int countOfTargets)
+    {
+        float startX = -xOffset * (int)(countOfTargets / 2);
+        for (int i = 0; i < countOfTargets; i++, startX += xOffset)
+        {
+            var target = Instantiate(targetPrefab, canvas.transform);
+            target.transform.localPosition = new Vector2(startX, yCoordinate);
         }
     }
 }

@@ -26,6 +26,7 @@ public class GameLogic : MonoBehaviour
         random.Shuffle<CardInfo>(toUseCards);
 
         cardBuilder.BuildSequence(toUseCards, 250, -318);
+        cardBuilder.BuildTargets(5);
 
         StartCoroutine(WaitBeforeHide(cardBuilder.BuildSequence(toRememberCards)));
     }

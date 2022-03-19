@@ -8,6 +8,13 @@ public class CardTarget : MonoBehaviour, IDropHandler
     RectTransform targetTransform;
     CardUI choosedCard;
 
+    CardInfo card;
+
+    public void Link(CardInfo card)
+    {
+        this.card = card;
+    }
+
     private void Awake()
     {
         targetTransform = GetComponent<RectTransform>();

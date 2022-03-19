@@ -5,12 +5,13 @@ using UnityEngine;
 public class GameLogic : MonoBehaviour
 {
     [SerializeField] CardBuilder cardBuilder;
-    List<CardUI> cards;
+    CardInfo[] toRememberCards;
+    CardTarget[] targets;
 
     // Start is called before the first frame update
     void Start()
     {
-        CardInfo[] toRememberCards = new CardInfo[5];
+        toRememberCards = new CardInfo[5];
         CardInfo[] toUseCards = new CardInfo[7];
         int i;
         for (i = 0; i < 5; i++)
@@ -26,9 +27,17 @@ public class GameLogic : MonoBehaviour
         random.Shuffle<CardInfo>(toUseCards);
 
         cardBuilder.BuildSequence(toUseCards, 250, -318);
-        cardBuilder.BuildTargets(5);
+        
+        targets = cardBuilder.BuildTargets(5);
+        LinkTargetToCard();
 
         StartCoroutine(WaitBeforeHide(cardBuilder.BuildSequence(toRememberCards)));
+    }
+
+    private void LinkTargetToCard()
+    {
+        for (int i = 0; i < targets.Length; i++)
+            targets[i].Link(toRememberCards[i]);
     }
 
     IEnumerator WaitBeforeHide(List<CardUI> cards)

@@ -44,13 +44,21 @@ public class CardBuilder : MonoBehaviour
         }
     }
 
-    public void BuildTargets(int countOfTargets)
+    public CardTarget[] BuildTargets(int countOfTargets)
     {
+        if (countOfTargets <= 0)
+            return null;
+
+        CardTarget[] targets = new CardTarget[countOfTargets];
+
         float startX = -xOffset * (int)(countOfTargets / 2);
         for (int i = 0; i < countOfTargets; i++, startX += xOffset)
         {
             var target = Instantiate(targetPrefab, canvas.transform);
             target.transform.localPosition = new Vector2(startX, yCoordinate);
+            targets[i] = target;
         }
+
+        return targets;
     }
 }

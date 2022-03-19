@@ -166,6 +166,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0faba73f0048e740be7a346db100033, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  text: {fileID: 7622408266544955828}
+  colorImage: {fileID: 1879880564091551006}
   isChoosed: 0
 --- !u!225 &482648287632290967
 CanvasGroup:
@@ -191,7 +193,7 @@ GameObject:
   - component: {fileID: 7622408266544955829}
   - component: {fileID: 7622408266544955828}
   m_Layer: 5
-  m_Name: AttackText
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

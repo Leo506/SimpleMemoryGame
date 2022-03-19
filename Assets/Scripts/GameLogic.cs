@@ -5,23 +5,35 @@ using UnityEngine;
 public class GameLogic : MonoBehaviour
 {
     [SerializeField] CardBuilder cardBuilder;
+    List<CardUI> cards;
 
     // Start is called before the first frame update
     void Start()
     {
-        CardInfo[] cards = new CardInfo[5];
-        for (int i = 0; i < 5; i++)
+        CardInfo[] toRememberCards = new CardInfo[5];
+        CardInfo[] toUseCards = new CardInfo[7];
+        int i;
+        for (i = 0; i < 5; i++)
         {
-            cards[i] = CardGenerator.GenerateCard();
+            toRememberCards[i] = CardGenerator.GenerateCard();
+            toUseCards[i] = toRememberCards[i];
         }
 
-        StartCoroutine(WaitBeforeHide(cardBuilder.BuildSequence(cards)));
+        for (; i < 7; i++)
+            toUseCards[i] = CardGenerator.GenerateCard();
+
+        var random = new System.Random();
+        random.Shuffle<CardInfo>(toUseCards);
+
+        cardBuilder.BuildSequence(toUseCards, 250, -318);
+
+        StartCoroutine(WaitBeforeHide(cardBuilder.BuildSequence(toRememberCards)));
     }
 
-    IEnumerator WaitBeforeHide(List<GameObject> objs)
+    IEnumerator WaitBeforeHide(List<CardUI> cards)
     {
         yield return new WaitForSeconds(3);
-        foreach (var obj in objs)
-            obj.SetActive(false);
+        foreach (var obj in cards)
+            obj.gameObject.SetActive(false);
     }
 }

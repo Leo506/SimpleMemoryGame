@@ -123,6 +123,53 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &87658151
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 87658153}
+  - component: {fileID: 87658152}
+  m_Layer: 0
+  m_Name: CardBuilder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &87658152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 87658151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8099d54ddc0820749b90890a992fa621, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 529587181}
+  cardPrefab: {fileID: 2095444659}
+  xOffset: 250
+  yCoordinate: 0
+--- !u!4 &87658153
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 87658151}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 530.58734, y: 234.9079, z: -305.37238}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &170682816
 GameObject:
   m_ObjectHideFlags: 0
@@ -496,52 +543,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 240701440}
   m_CullTransparentMesh: 1
---- !u!1 &273041196
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 273041198}
-  - component: {fileID: 273041197}
-  m_Layer: 0
-  m_Name: EnemyCardUI
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &273041197
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 273041196}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7caf7d23ab18eb64cba3289538b3bf1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cardPos: {x: -365, y: 82}
-  canvas: {fileID: 529587181}
-  cardPrafab: {fileID: 7622408266106962677, guid: f68c69051d95ac24bb0208d656b0e1ac, type: 3}
---- !u!4 &273041198
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 273041196}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 547.8583, y: 716.21027, z: -77.52755}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &424355720
 GameObject:
   m_ObjectHideFlags: 0
@@ -1222,6 +1223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b13ce2c13be50a4fa0e13b14d159f91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardBuilder: {fileID: 0}
 --- !u!4 &671662880
 Transform:
   m_ObjectHideFlags: 0
@@ -1234,7 +1236,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &699170281
 GameObject:
@@ -1789,8 +1791,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0faba73f0048e740be7a346db100033, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackValueText: {fileID: 0}
-  healthValueText: {fileID: 0}
+  text: {fileID: 0}
+  colorImage: {fileID: 0}
   isChoosed: 0
 --- !u!114 &1096871188
 MonoBehaviour:
@@ -1895,8 +1897,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0faba73f0048e740be7a346db100033, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackValueText: {fileID: 0}
-  healthValueText: {fileID: 0}
+  text: {fileID: 0}
+  colorImage: {fileID: 0}
   isChoosed: 0
 --- !u!114 &1278613027
 MonoBehaviour:
@@ -1936,53 +1938,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1278613023}
   m_CullTransparentMesh: 1
---- !u!1 &1645936701
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1645936703}
-  - component: {fileID: 1645936702}
-  m_Layer: 0
-  m_Name: HumanHandUI
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1645936702
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1645936701}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e23d28b59c806f745b467cea50283eee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  xOffset: 250
-  yValue: -318
-  cardPrefab: {fileID: 7622408266106962677, guid: f68c69051d95ac24bb0208d656b0e1ac, type: 3}
-  canvas: {fileID: 529587181}
---- !u!4 &1645936703
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1645936701}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 530.2135, y: 697.7176, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1841866678
 GameObject:
   m_ObjectHideFlags: 0
@@ -2208,8 +2163,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0faba73f0048e740be7a346db100033, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackValueText: {fileID: 0}
-  healthValueText: {fileID: 0}
+  text: {fileID: 0}
+  colorImage: {fileID: 0}
   isChoosed: 0
 --- !u!114 &1845566560
 MonoBehaviour:
@@ -2394,8 +2349,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0faba73f0048e740be7a346db100033, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackValueText: {fileID: 0}
-  healthValueText: {fileID: 0}
+  text: {fileID: 0}
+  colorImage: {fileID: 0}
   isChoosed: 0
 --- !u!114 &1967842893
 MonoBehaviour:
@@ -2515,6 +2470,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1988437464}
   m_CullTransparentMesh: 1
+--- !u!1 &2095444659 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7622408266106962675, guid: f68c69051d95ac24bb0208d656b0e1ac, type: 3}
+  m_PrefabInstance: {fileID: 7622408266988814984}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7622408266988814984
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2528,7 +2488,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7622408266106962675, guid: f68c69051d95ac24bb0208d656b0e1ac, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7622408266106962676, guid: f68c69051d95ac24bb0208d656b0e1ac, type: 3}
       propertyPath: m_Pivot.x
@@ -2613,6 +2573,10 @@ PrefabInstance:
     - target: {fileID: 7622408266106962676, guid: f68c69051d95ac24bb0208d656b0e1ac, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7622408266544955826, guid: f68c69051d95ac24bb0208d656b0e1ac, type: 3}
+      propertyPath: m_Name
+      value: Text
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f68c69051d95ac24bb0208d656b0e1ac, type: 3}

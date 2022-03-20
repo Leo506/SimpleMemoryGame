@@ -5,7 +5,6 @@ using UnityEngine;
 public class GameLogic : MonoBehaviour
 {
     [SerializeField] CardBuilder cardBuilder;
-    CardTarget[] targets;
     const int MAX_SEQUENCE_LENGTH = 7;
 
     // Start is called before the first frame update
@@ -58,7 +57,7 @@ public class GameLogic : MonoBehaviour
 
     private void CheckUserSequence()
     {
-        foreach (var target in targets)
+        foreach (var target in cardBuilder.GetCardTargets())
         {
             if (!target.HaveCorrectCard)
                 return;

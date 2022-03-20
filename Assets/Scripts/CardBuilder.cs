@@ -5,8 +5,19 @@ using UnityEngine;
 public class CardBuilder : MonoBehaviour
 {
     [SerializeField] Canvas canvas;
+
+    [Header("Префаб карты")]
     [SerializeField] CardUI cardPrefab;
+
+    [Header("Префаб цели")]
     [SerializeField] CardTarget targetPrefab;
+
+    [Header("Родительские объекты для клонов")]
+    [SerializeField] Transform rememberSeqRoot;
+    [SerializeField] Transform variantsSeqRoot;
+    [SerializeField] Transform targetsRoot;
+
+    [Header("Значения для спавна")]
     [SerializeField] float xOffset;
     [SerializeField] float yForRememberSeq;
     [SerializeField] float yForVariantsSeq;
@@ -29,11 +40,11 @@ public class CardBuilder : MonoBehaviour
         float xPos = -xOffset * (cards.Length / 2);
         for (int i = 0; i < cards.Length; i++, xPos += xOffset)
         {
-            var cardObj = Instantiate(cardPrefab, canvas.transform);
+            var cardObj = Instantiate(cardPrefab, rememberSeqRoot);
             cardObj.transform.localPosition = new Vector2(xPos, yForRememberSeq);
             cardObj.SetValues(canvas, cards[i].CardText, cards[i].CardColor);
 
-            var target = Instantiate(targetPrefab, canvas.transform);
+            var target = Instantiate(targetPrefab, targetsRoot);
             target.transform.localPosition = new Vector2(xPos, yForRememberSeq);
             target.Link(cards[i]);
 
@@ -47,7 +58,7 @@ public class CardBuilder : MonoBehaviour
         float startX = -xOffset * (cards.Length / 2);
         for (int i = 0; i < cards.Length; i++, startX += xOffset)
         {
-            var cardObj = Instantiate(cardPrefab, canvas.transform);
+            var cardObj = Instantiate(cardPrefab, variantsSeqRoot);
             cardObj.transform.localPosition = new Vector2(startX, yForVariantsSeq);
             cardObj.SetValues(canvas, cards[i].CardText, cards[i].CardColor);
         }

@@ -10,7 +10,7 @@ public class GameLogic : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        var toRememberCards = CreateRememberSequence(5);
+        var toRememberCards = CreateRememberSequence(DifficultController.currentDifficult.CountOfRememberCards);
 
         var variantsCards = CreateVariantsSequence(toRememberCards);
 
@@ -24,6 +24,7 @@ public class GameLogic : MonoBehaviour
         CardTarget.CardWasDrop += CheckUserSequence;
     }
 
+
     private CardInfo[] CreateRememberSequence(int sequenceLength)
     {
         CardInfo[] toRememberCards = new CardInfo[sequenceLength];
@@ -33,6 +34,7 @@ public class GameLogic : MonoBehaviour
 
         return toRememberCards;
     }
+
 
     private CardInfo[] CreateVariantsSequence(CardInfo[] rememberCards)
     {
@@ -50,10 +52,12 @@ public class GameLogic : MonoBehaviour
 
     IEnumerator WaitBeforeHide(List<CardUI> cards)
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(DifficultController.currentDifficult.TimeToRemember);
         foreach (var obj in cards)
             obj.gameObject.SetActive(false);
+        DifficultController.currentDifficult.UpdateTime();
     }
+
 
     private void CheckUserSequence()
     {
@@ -64,5 +68,10 @@ public class GameLogic : MonoBehaviour
         }
 
         Debug.Log("Victory");
+    }
+
+    private void OnDestroy()
+    {
+        CardTarget.CardWasDrop -= CheckUserSequence;
     }
 }

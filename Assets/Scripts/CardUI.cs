@@ -48,7 +48,10 @@ public class CardUI : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEn
     {
         Debug.Log("Begin drag");
         if (!isFreezed)
+        {
             canvasGroup.blocksRaycasts = false;
+            transform.SetAsLastSibling();
+        }
     }
 
     public void OnDrag(PointerEventData eventData)

@@ -8,57 +8,58 @@ public class CardBuilder : MonoBehaviour
     [SerializeField] CardUI cardPrefab;
     [SerializeField] CardTarget targetPrefab;
     [SerializeField] float xOffset;
-    [SerializeField] float yCoordinate;
-    
-    public List<CardUI> BuildSequence(CardInfo[] cards)
+    [SerializeField] float yForRememberSeq;
+    [SerializeField] float yForVariantsSeq;
+
+    List<CardUI> rememberCards;
+    List<CardTarget> cardTargets;
+
+    public void BuildGameBoard(CardInfo[] rememberCards, CardInfo[] variantsCards)
     {
-        if (cards.Length == 0)
-            return null;
 
-        List<CardUI> cardOnScreen = new List<CardUI>();
+        this.rememberCards = new List<CardUI>();
+        cardTargets = new List<CardTarget>();
 
-        float startX = -xOffset * (int)(cards.Length / 2);
-        for (int i = 0; i < cards.Length; i++, startX += xOffset)
-        {
-            var cardObj = Instantiate(cardPrefab, canvas.transform);
-            cardObj.transform.localPosition = new Vector2(startX, yCoordinate);
-            cardObj.SetValues(canvas, cards[i].CardText, cards[i].CardColor);
-
-            cardOnScreen.Add(cardObj);
-        }
-
-        return cardOnScreen;
+        BuildRememberSeqAndTargets(rememberCards);
+        BuildVariantsSeq(variantsCards);
     }
 
-    public void BuildSequence(CardInfo[] cards, float offset, float vertCoordinate)
+    private void BuildRememberSeqAndTargets(CardInfo[] cards)
     {
-        if (cards.Length == 0)
-            return;
-
-        float startX = -offset * (int)(cards.Length / 2);
-        for (int i = 0; i < cards.Length; i++, startX += xOffset)
+        float xPos = -xOffset * (cards.Length / 2);
+        for (int i = 0; i < cards.Length; i++, xPos += xOffset)
         {
             var cardObj = Instantiate(cardPrefab, canvas.transform);
-            cardObj.transform.localPosition = new Vector2(startX, vertCoordinate);
+            cardObj.transform.localPosition = new Vector2(xPos, yForRememberSeq);
             cardObj.SetValues(canvas, cards[i].CardText, cards[i].CardColor);
-        }
-    }
 
-    public CardTarget[] BuildTargets(int countOfTargets)
-    {
-        if (countOfTargets <= 0)
-            return null;
-
-        CardTarget[] targets = new CardTarget[countOfTargets];
-
-        float startX = -xOffset * (int)(countOfTargets / 2);
-        for (int i = 0; i < countOfTargets; i++, startX += xOffset)
-        {
             var target = Instantiate(targetPrefab, canvas.transform);
-            target.transform.localPosition = new Vector2(startX, yCoordinate);
-            targets[i] = target;
-        }
+            target.transform.localPosition = new Vector2(xPos, yForRememberSeq);
+            target.Link(cards[i]);
 
-        return targets;
+            rememberCards.Add(cardObj);
+            cardTargets.Add(target);
+        }
+    }
+
+    private void BuildVariantsSeq(CardInfo[] cards)
+    {
+        float startX = -xOffset * (cards.Length / 2);
+        for (int i = 0; i < cards.Length; i++, startX += xOffset)
+        {
+            var cardObj = Instantiate(cardPrefab, canvas.transform);
+            cardObj.transform.localPosition = new Vector2(startX, yForVariantsSeq);
+            cardObj.SetValues(canvas, cards[i].CardText, cards[i].CardColor);
+        }
+    }
+
+    public List<CardUI> GetRememberCards()
+    {
+        return rememberCards;
+    }
+
+    public List<CardTarget> GetCardTargets()
+    {
+        return cardTargets;
     }
 }

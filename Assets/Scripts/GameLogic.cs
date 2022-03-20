@@ -5,42 +5,49 @@ using UnityEngine;
 public class GameLogic : MonoBehaviour
 {
     [SerializeField] CardBuilder cardBuilder;
-    CardInfo[] toRememberCards;
     CardTarget[] targets;
+    const int MAX_SEQUENCE_LENGTH = 7;
 
     // Start is called before the first frame update
     void Start()
     {
-        toRememberCards = new CardInfo[5];
-        CardInfo[] toUseCards = new CardInfo[7];
-        int i;
-        for (i = 0; i < 5; i++)
-        {
-            toRememberCards[i] = CardGenerator.GenerateCard();
-            toUseCards[i] = toRememberCards[i];
-        }
+        var toRememberCards = CreateRememberSequence(5);
 
-        for (; i < 7; i++)
-            toUseCards[i] = CardGenerator.GenerateCard();
+        var variantsCards = CreateVariantsSequence(toRememberCards);
 
         var random = new System.Random();
-        random.Shuffle<CardInfo>(toUseCards);
+        random.Shuffle<CardInfo>(variantsCards);
 
-        cardBuilder.BuildSequence(toUseCards, 250, -318);
-        
-        targets = cardBuilder.BuildTargets(5);
-        LinkTargetToCard();
+        cardBuilder.BuildGameBoard(toRememberCards, variantsCards);
 
-        StartCoroutine(WaitBeforeHide(cardBuilder.BuildSequence(toRememberCards)));
+        StartCoroutine(WaitBeforeHide(cardBuilder.GetRememberCards()));
 
         CardTarget.CardWasDrop += CheckUserSequence;
     }
 
-    private void LinkTargetToCard()
+    private CardInfo[] CreateRememberSequence(int sequenceLength)
     {
-        for (int i = 0; i < targets.Length; i++)
-            targets[i].Link(toRememberCards[i]);
+        CardInfo[] toRememberCards = new CardInfo[sequenceLength];
+        toRememberCards = new CardInfo[sequenceLength];
+        for (int i = 0; i < sequenceLength; i++)
+            toRememberCards[i] = CardGenerator.GenerateCard();
+
+        return toRememberCards;
     }
+
+    private CardInfo[] CreateVariantsSequence(CardInfo[] rememberCards)
+    {
+        CardInfo[] variantsCards = new CardInfo[MAX_SEQUENCE_LENGTH];
+        
+        for (int i = 0; i < rememberCards.Length; i++)
+            variantsCards[i] = rememberCards[i];
+
+        for (int i = rememberCards.Length; i < MAX_SEQUENCE_LENGTH; i++)
+            variantsCards[i] = CardGenerator.GenerateCard();
+
+        return variantsCards;
+    }
+
 
     IEnumerator WaitBeforeHide(List<CardUI> cards)
     {

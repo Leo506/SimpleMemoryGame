@@ -37,6 +37,13 @@ public class CardUI : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEn
     }
 
 
+    public CardInfo GetCardInfo()
+    {
+        return new CardInfo(text.text, colorImage.color);
+    }
+
+
+    #region
     public void OnBeginDrag(PointerEventData eventData)
     {
         Debug.Log("Begin drag");
@@ -81,4 +88,5 @@ public class CardUI : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEn
         else
             canvasGroup.blocksRaycasts = true;
     }
+    #endregion
 }

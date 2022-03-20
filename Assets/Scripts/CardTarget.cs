@@ -10,6 +10,18 @@ public class CardTarget : MonoBehaviour, IDropHandler
 
     CardInfo card;
 
+    public static event System.Action CardWasDrop;
+    public bool HaveCorrectCard
+    {
+        get
+        {
+            if (choosedCard == null)
+                return false;
+
+            return choosedCard.GetCardInfo().Equals(card);
+        }
+    }
+
     public void Link(CardInfo card)
     {
         this.card = card;
@@ -38,6 +50,7 @@ public class CardTarget : MonoBehaviour, IDropHandler
 
             choosedCard = card;
             choosedCard.FreezeMovemenet(true);
+            CardWasDrop?.Invoke();
 
             eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = targetTransform.anchoredPosition;
         }

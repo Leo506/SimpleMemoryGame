@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 7622408266106962678}
   - component: {fileID: 7622408266106962677}
   - component: {fileID: 482648287632290967}
+  - component: {fileID: 3208094301301625698}
   m_Layer: 5
   m_Name: EmptyCard
   m_TagString: Untagged
@@ -181,6 +182,25 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!95 &3208094301301625698
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7622408266106962675}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 01fe03a4654294f49ac16cd9a6a6e890, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7622408266544955826
 GameObject:
   m_ObjectHideFlags: 0

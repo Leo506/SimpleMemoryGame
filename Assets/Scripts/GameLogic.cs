@@ -5,6 +5,8 @@ using UnityEngine;
 public class GameLogic : MonoBehaviour
 {
     [SerializeField] CardBuilder cardBuilder;
+    [SerializeField] CanvasData canvasData;
+
     const int MAX_SEQUENCE_LENGTH = 7;
 
     // Start is called before the first frame update
@@ -67,11 +69,24 @@ public class GameLogic : MonoBehaviour
                 return;
         }
 
-        Debug.Log("Victory");
+        ICommand command = new VictoryCommand(canvasData);
+        command.Execute();
     }
 
     private void OnDestroy()
     {
         CardTarget.CardWasDrop -= CheckUserSequence;
+    }
+
+    public void Pause()
+    {
+        ICommand command = new PauseCommand(canvasData);
+        command.Execute();
+    }
+
+    public void Unpause()
+    {
+        ICommand command = new UnpauseCommand(canvasData);
+        command.Execute();
     }
 }

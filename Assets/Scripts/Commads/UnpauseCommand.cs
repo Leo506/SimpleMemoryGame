@@ -9,7 +9,7 @@
 
     public void Execute()
     {
-        canvasData.mainCanvas.enabled = true;
-        canvasData.pauseCanvas.enabled = false;
+        canvasData.mainCanvas.AppearCanvas();
+        canvasData.pauseCanvas.HideCanvas(); ;
     }
 }

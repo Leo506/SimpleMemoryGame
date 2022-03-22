@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CanvasData : MonoBehaviour
 {
-    public Canvas mainCanvas;
-    public Canvas pauseCanvas;
-    public Canvas victoryCanvas;
+    public CanvasWrapper mainCanvas;
+    public CanvasWrapper pauseCanvas;
+    public CanvasWrapper victoryCanvas;
 }

@@ -9,7 +9,7 @@ public class PauseCommand : ICommand
 
     public void Execute()
     {
-        canvasData.mainCanvas.enabled = false;
-        canvasData.pauseCanvas.enabled = true;
+        canvasData.mainCanvas.HideCanvas();
+        canvasData.pauseCanvas.AppearCanvas();
     }
 }

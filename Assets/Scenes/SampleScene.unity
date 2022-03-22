@@ -902,6 +902,8 @@ GameObject:
   - component: {fileID: 529587181}
   - component: {fileID: 529587180}
   - component: {fileID: 529587179}
+  - component: {fileID: 529587183}
+  - component: {fileID: 529587184}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -993,6 +995,37 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &529587183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 529587178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62f3ca0259e482240ab269e76572dea4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &529587184
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 529587178}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: abc237f0e1c8434489edf827b38526cd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &658820966
 GameObject:
   m_ObjectHideFlags: 0
@@ -1071,6 +1104,8 @@ GameObject:
   - component: {fileID: 663306361}
   - component: {fileID: 663306360}
   - component: {fileID: 663306359}
+  - component: {fileID: 663306364}
+  - component: {fileID: 663306363}
   m_Layer: 5
   m_Name: NextRoundCanvas
   m_TagString: Untagged
@@ -1159,6 +1194,37 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!95 &663306363
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663306358}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: 2870591811cefac4782cbb19430d5128, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &663306364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663306358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62f3ca0259e482240ab269e76572dea4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &671662878
 GameObject:
   m_ObjectHideFlags: 0
@@ -1410,6 +1476,7 @@ GameObject:
   - component: {fileID: 1104382498}
   - component: {fileID: 1104382497}
   - component: {fileID: 1104382501}
+  - component: {fileID: 1104382502}
   m_Layer: 5
   m_Name: PauseCanvas
   m_TagString: Untagged
@@ -1517,6 +1584,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1104382502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1104382496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62f3ca0259e482240ab269e76572dea4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1139494065
 GameObject:
   m_ObjectHideFlags: 0
@@ -1581,9 +1660,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82b91b52fbfd99842b21c743eeb411d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCanvas: {fileID: 529587181}
-  pauseCanvas: {fileID: 1104382499}
-  victoryCanvas: {fileID: 663306361}
+  mainCanvas: {fileID: 529587183}
+  pauseCanvas: {fileID: 1104382502}
+  victoryCanvas: {fileID: 663306364}
 --- !u!4 &1312027834
 Transform:
   m_ObjectHideFlags: 0

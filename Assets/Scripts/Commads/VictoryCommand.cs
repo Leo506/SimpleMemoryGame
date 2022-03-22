@@ -9,7 +9,7 @@ public class VictoryCommand : ICommand
 
     public void Execute()
     {
-        canvasData.mainCanvas.enabled = false;
-        canvasData.victoryCanvas.enabled = true;
+        canvasData.mainCanvas.HideCanvas();
+        canvasData.victoryCanvas.AppearCanvas(); ;
     }
 }

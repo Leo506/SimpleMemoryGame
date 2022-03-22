@@ -57,7 +57,6 @@ public class GameLogic : MonoBehaviour
         yield return new WaitForSeconds(DifficultController.currentDifficult.TimeToRemember);
         foreach (var obj in cards)
             obj.gameObject.SetActive(false);
-        DifficultController.currentDifficult.UpdateTime();
     }
 
 
@@ -87,6 +86,18 @@ public class GameLogic : MonoBehaviour
     public void Unpause()
     {
         ICommand command = new UnpauseCommand(canvasData);
+        command.Execute();
+    }
+
+    public void NextRound()
+    {
+        ICommand command = new NextRoundCommand();
+        command.Execute();
+    }
+
+    public void BackToMenu()
+    {
+        ICommand command = new BackToMenuCommand("Menu");
         command.Execute();
     }
 }
